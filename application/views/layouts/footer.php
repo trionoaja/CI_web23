@@ -3,6 +3,11 @@
         <strong>Copyright &copy;
             <?= date('Y'); ?> Portal Berita</strong>
     </footer>
+
+ <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
 </div>
 <script src="<?= base_url('assets/adminlte/plugins/jquery/jquery.min.js')?>"></script>
 <!-- jQuery UI 1.11.4 -->
