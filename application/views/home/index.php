@@ -10,7 +10,8 @@
                     <span class="badge bg-info"><?= $item->kategori; ?></span>
                     <p class="mt-2"><em><?= $item->headline; ?></em></p>
                     <p><?= word_limiter(strip_tags($item->isi_berita), 20); ?>...</p>
-                    <a href="<?= base_url('home_berita/detail/' . $item->idberita); ?>" class="btn btn-sm btn-primary">Selengkapnya</a>
+                    <a href="<?= base_url('home_berita/detail/' . $item->idberita); ?>"
+                     class="btn btn-sm btn-primary">Selengkapnya</a>
 
                 </div>
             </div>
