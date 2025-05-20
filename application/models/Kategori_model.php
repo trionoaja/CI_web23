@@ -5,6 +5,9 @@ class Kategori_model extends CI_Model{
     public function get_all_kategori() {
         return $this->db->get('kategori_berita')->result_array();
     }
+    public function get_all() {
+        return $this->db->get('kategori_berita')->result();
+    }
     public function insert_kategori($data){
         return $this->db->insert('kategori_berita',$data);
     }

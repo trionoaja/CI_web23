@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH')OR exit('No direct script access allowed');
 
-class kategori extends CI_Controller {
+class kategori extends MY_Controller {
 
     public function __construct() {
         parent::__construct();

@@ -52,93 +52,94 @@
 <script src="<?= base_url('assets/adminlte/dist/js/pages/dashboard.js')?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/adminlte/dist/js/demo.js')?>"></script>
-<!-- DataTables & Export Buttons -->
-<!-- <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+<!-- <!-- DataTables & Export Buttons -->
+<script src="<?= base_url('assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/jszip/jszip.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/pdfmake/pdfmake.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/pdfmake/vfs_fonts.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugins/datatables-buttons/js/buttons.print.min.js') ?>"></script>
 
-<!-- Buttons 
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script> -->
 <script>
  $(document).ready(function () {
-         $('#datatable').DataTable({
-      responsive: true,
-      lengthChange: true,
-      autoWidth: false,
-      dom: 'Bfrtip',
-      buttons: [
-        {
-          extend: 'excelHtml5',
-          className: 'btn btn-success btn-sm',
-          title: 'Daftar_Berita'
-        },
-        {
-          extend: 'pdfHtml5',
-          className: 'btn btn-danger btn-sm',
-          title: 'Daftar_Berita',
-          orientation: 'landscape',
-          pageSize: 'A4'
-        },
-        {
-          extend: 'print',
-          className: 'btn btn-info btn-sm',
-          title: 'Daftar_Berita'
-        }
-      ]
-    }).buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+    // Inisialisasi DataTable
+    const table = $('#datatable').DataTable({
+        responsive: true,
+        lengthChange: true,
+        autoWidth: false,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                className: 'btn btn-success btn-sm',
+                title: 'Daftar_Berita'
+            },
+            {
+                extend: 'pdfHtml5',
+                className: 'btn btn-danger btn-sm',
+                title: 'Daftar_Berita',
+                orientation: 'landscape',
+                pageSize: 'A4'
+            },
+            {
+                extend: 'print',
+                className: 'btn btn-info btn-sm',
+                title: 'Daftar_Berita'
+            }
+        ]
+    });
 
-        $('.summernote').summernote({
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'italic', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {
-                onImageUpload: function (files) {
-                    for (let i = 0; i < files.length; i++) {
-                        uploadSummernoteImage(files[i]);
-                    }
+    table.buttons().container().appendTo('#datatable_wrapper .col-md-6:eq(0)');
+
+    // Inisialisasi Summernote
+    $('.summernote').summernote({
+        height: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'italic', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+        callbacks: {
+            onImageUpload: function (files) {
+                for (let i = 0; i < files.length; i++) {
+                    uploadSummernoteImage(files[i]);
                 }
             }
-        });
-
-        function uploadSummernoteImage(file) {
-            let data = new FormData();
-            data.append('image', file);
-
-            $.ajax({
-                url: '<?= base_url('berita/upload_summernote_image'); ?>',
-                type: 'POST',
-                data: data,
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function (response) {
-                    try {
-                        let imageUrl = JSON.parse(response).url;
-                        $('.summernote').summernote('insertImage', imageUrl);
-                    } catch (e) {
-                        console.error('Error parsing JSON response:', e);
-                        console.log('Raw response:', response);
-                    }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    console.error(textStatus, errorThrown);
-                }
-            });
         }
     });
+
+    function uploadSummernoteImage(file) {
+        let data = new FormData();
+        data.append('image', file);
+
+        $.ajax({
+            url: '<?= base_url('berita/upload_summernote_image'); ?>',
+            type: 'POST',
+            data: data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+                try {
+                    let imageUrl = JSON.parse(response).url;
+                    $('.summernote').summernote('insertImage', imageUrl);
+                } catch (e) {
+                    console.error('Error parsing JSON response:', e);
+                    console.log('Raw response:', response);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error(textStatus, errorThrown);
+            }
+        });
+    }
+});
+
 </script>
 </body>
 </html>

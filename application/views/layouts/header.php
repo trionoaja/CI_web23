@@ -24,6 +24,47 @@
   <!-- summernote -->
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/plugins/summernote/summernote-bs4.css'); ?>">
 </head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= base_url('home_berita'); ?>" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= base_url('kategori'); ?>" class="nav-link">Kategori</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?= base_url('kontak'); ?>" class="nav-link">Kontak</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- User Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-user"></i> <span class="d-none d-md-inline">Akun</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="<?= base_url('profil'); ?>" class="dropdown-item">
+            <i class="fas fa-user-cog mr-2"></i> Profil
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?= base_url('logout'); ?>" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2"></i> Keluar
+          </a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
