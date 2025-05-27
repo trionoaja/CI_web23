@@ -29,15 +29,20 @@
               <i class="fas fa-times"></i></button>
           </div>
         </div>
+		<div class="box-body">
 <h3>Laporan Berita</h3>
 <form method="post" action="<?= base_url('berita/cetak_laporan') ?>">
+<div class="box-body">
+	 <div class="form-group">
     <label>Dari Tanggal:</label>
     <input type="date" name="tanggal_dari" required>
     
     <label>Sampai Tanggal:</label>
     <input type="date" name="tanggal_sampai" required>
-    
-    <button type="submit">Tampilkan Laporan</button>
+    </div>
+	<div class="box-footer">
+    <button type="submit" class="btn btn-primary" >Tampilkan Laporan</button>
+	</div>
 </form>
 
 </div>
@@ -48,7 +53,7 @@
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
-
+</div>
     </section>
     <!-- /.content -->
-</div>
+	</div>

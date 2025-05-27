@@ -30,13 +30,13 @@
           </div>
         </div>
 <h3>Laporan Berita dari <?= $tanggal_dari ?> sampai <?= $tanggal_sampai ?></h3>
-
 <table id="datatable" border="1" cellpadding="5" cellspacing="0">
     <thead>
         <tr>
             <th>No</th>
             <th>Judul</th>
             <th>Tanggal Publish</th>
+            <th>Isi Berita</th>
             <th>Penulis</th>
         </tr>
     </thead>
@@ -46,6 +46,7 @@
             <td><?= $no++ ?></td>
             <td><?= $b->judul ?></td>
             <td><?= $b->tanggal_publish ?></td>
+            <td><?= $b->isi_berita ?></td>
             <td><?= $b->pengirim ?></td>
         </tr>
         <?php endforeach; ?>

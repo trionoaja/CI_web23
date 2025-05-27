@@ -22,7 +22,6 @@ class Berita_model extends CI_Model{
     {
     $this->db->where('tanggal_publish >=', $dari);
     $this->db->where('tanggal_publish <=', $sampai);
-   // $this->db->where('status', 'publish'); // hanya berita yang sudah publish
     return $this->db->get('berita')->result();
     }
 }
