@@ -102,4 +102,25 @@ class Berita extends MY_Controller {
             redirect('berita');
         }
     }
+    public function laporan()
+{
+     $this->load->view('templates/header');
+    $this->load->view('berita/laporan_form');
+    $this->load->view('templates/footer');
+}
+
+public function cetak_laporan()
+{
+    $tanggal_dari = $this->input->post('tanggal_dari');
+    $tanggal_sampai = $this->input->post('tanggal_sampai');
+
+    $data['berita'] = $this->Berita_model->get_laporan_berita($tanggal_dari, $tanggal_sampai);
+    $data['tanggal_dari'] = $tanggal_dari;
+    $data['tanggal_sampai'] = $tanggal_sampai;
+
+    $this->load->view('templates/header');
+    $this->load->view('berita/laporan_hasil', $data);
+    $this->load->view('templates/footer');
+}
+
 }
