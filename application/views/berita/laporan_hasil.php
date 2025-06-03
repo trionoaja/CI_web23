@@ -29,6 +29,7 @@
               <i class="fas fa-times"></i></button>
           </div>
         </div>
+  <div class="box-body">
 <h3>Laporan Berita dari <?= $tanggal_dari ?> sampai <?= $tanggal_sampai ?></h3>
 <table id="datatable" border="1" cellpadding="5" cellspacing="0">
     <thead>
@@ -60,7 +61,6 @@
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
-
     </section>
     <!-- /.content -->
 </div>
