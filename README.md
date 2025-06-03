@@ -3,3 +3,8 @@
 Untuk login gunakan 
 username : admin
 Password	: 123456
+
+Nama :
+NIM :
+Kelas :
+
